@@ -1,5 +1,4 @@
 package org.firstinspires.ftc.teamcode;
-
 import com.qualcomm.robotcore.hardware.CRServo;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
@@ -31,8 +30,11 @@ public class HardwareRobot {
     public DcMotor frontLeft;
     public DcMotor backRight;
     public DcMotor backLeft;
-    public DcMotor slideRight;
-    public DcMotor slideLeft;
+    public Servo rightClamp;
+    public Servo leftClamp;
+    public Servo rightFlipper;
+    public Servo leftFlipper;
+
     HardwareMap hwMap;
 
     // Constructor
@@ -47,29 +49,24 @@ public class HardwareRobot {
         hwMap = ahwMap;
 
         // Define and Initialize Motors
+        // Drive motors
         frontRight = hwMap.get(DcMotor.class, "frontRight");
         frontLeft = hwMap.get(DcMotor.class, "frontLeft");
         backRight = hwMap.get(DcMotor.class, "backRight");
         backLeft = hwMap.get(DcMotor.class, "backLeft");
-        slideRight = hwMap.get(DcMotor.class, "slideRight");
-        slideLeft = hwMap.get(DcMotor.class, "slideLeft");
 
-        // Reverse Directions
-        // FL.setDirection(DcMotorSimple.Direction.REVERSE);
-        // BR.setDirection(DcMotorSimple.Direction.REVERSE);
-        // FR.setDirection(DcMotorSimple.Direction.REVERSE);
+        // Slide motors
 
-        // Run Using Encoders
-        frontRight.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-        frontLeft.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-        backRight.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-        backLeft.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-
+        // Motor Instant Brake for TeleOp
         frontRight.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         frontLeft.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         backRight.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         backLeft.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
 
         // Define and Initialize Servos
+        rightClamp = hwMap.get(Servo.class, "rightClamp");
+        leftClamp = hwMap.get(Servo.class, "leftClamp");
+        rightFlipper = hwMap.get(Servo.class, "rightFlipper");
+        leftFlipper = hwMap.get(Servo.class, "leftFlipper");
     }
 }
