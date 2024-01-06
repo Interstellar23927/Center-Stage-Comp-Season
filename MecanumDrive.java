@@ -1,5 +1,4 @@
 package org.firstinspires.ftc.teamcode;
-
 import com.qualcomm.robotcore.hardware.Gamepad;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.util.ElapsedTime;
@@ -10,7 +9,7 @@ public class MecanumDrive {
 
     HardwareRobot robot;
     public ElapsedTime timer;
-    double DriveSen = 0.5;
+    double DriveSen = 0.9;
 
     public MecanumDrive(HardwareMap hardwareMap) {
 
@@ -35,7 +34,7 @@ public class MecanumDrive {
 
         double y = 0.5 * gamepad1.left_stick_x;
         double x = 0.5 * -gamepad1.left_stick_y;
-        double rx = 0.3 * gamepad1.right_stick_x;
+        double rx = 0.7 * gamepad1.right_stick_x;
 
         double denominator = Math.max(Math.abs(y) + Math.abs(x) + Math.abs(rx), 1);
 
@@ -48,7 +47,7 @@ public class MecanumDrive {
 
         else {
             double frontLeftPower = (y + x + rx) / denominator;
-            double backLeftPower = (y - x - rx) / denominator;
+            double backLeftPower = -(y - x - rx) / denominator;
             double frontRightPower = (y - x + rx) / denominator;
             double backRightPower = -(y + x - rx) / denominator;
 
