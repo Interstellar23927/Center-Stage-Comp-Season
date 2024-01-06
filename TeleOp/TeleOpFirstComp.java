@@ -17,18 +17,16 @@ public class TeleOpFirstComp extends LinearOpMode {
 
         robot.init(hardwareMap);
 
-        MecanumDrive drive = new MecanumDrive(hardwareMap);
-        Slides slides = new Slides(robot);
-        Intake intake = new Intake(robot);
+        MecanumDrive drive = new MecanumDrive(robot, timer);
+        Collector collector = new Collector(robot);
 
         waitForStart();
 
-        if (!isStopRequested()) return;
+        if (isStopRequested()) return;
 
         while(opModeIsActive()) {
             drive.Update(gamepad1, gamepad2);
-            slides.Update(gamepad1, gamepad2);
-            intake.Update(gamepad1, gamepad2);
+            collector.Update(gamepad1, gamepad2);
         }
     }
 
