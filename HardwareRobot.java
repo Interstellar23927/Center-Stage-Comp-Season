@@ -1,7 +1,6 @@
 package org.firstinspires.ftc.teamcode;
 import com.qualcomm.robotcore.hardware.CRServo;
 import com.qualcomm.robotcore.hardware.DcMotor;
-import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
@@ -30,10 +29,12 @@ public class HardwareRobot {
     public DcMotor frontLeft;
     public DcMotor backRight;
     public DcMotor backLeft;
+    public DcMotor slideRight;
+    public DcMotor slideLeft;
     public Servo rightClamp;
     public Servo leftClamp;
-    public Servo rightFlipper;
-    public Servo leftFlipper;
+    public CRServo rightFlipper;
+    public CRServo leftFlipper;
 
     HardwareMap hwMap;
 
@@ -54,6 +55,8 @@ public class HardwareRobot {
         frontLeft = hwMap.get(DcMotor.class, "frontLeft");
         backRight = hwMap.get(DcMotor.class, "backRight");
         backLeft = hwMap.get(DcMotor.class, "backLeft");
+        slideRight = hwMap.get(DcMotor.class, "slideRight");
+        slideLeft = hwMap.get(DcMotor.class, "slideLeft");
 
         // Slide motors
 
@@ -62,11 +65,13 @@ public class HardwareRobot {
         frontLeft.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         backRight.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         backLeft.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        slideRight.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        slideLeft.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
 
         // Define and Initialize Servos
         rightClamp = hwMap.get(Servo.class, "rightClamp");
         leftClamp = hwMap.get(Servo.class, "leftClamp");
-        rightFlipper = hwMap.get(Servo.class, "rightFlipper");
-        leftFlipper = hwMap.get(Servo.class, "leftFlipper");
+        rightFlipper = hwMap.get(CRServo.class, "rightFlipper");
+        leftFlipper = hwMap.get(CRServo.class, "leftFlipper");
     }
 }
