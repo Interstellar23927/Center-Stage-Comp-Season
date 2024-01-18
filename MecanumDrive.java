@@ -32,9 +32,9 @@ public class MecanumDrive {
 
     public void Update(Gamepad gamepad1, Gamepad gamepad2) {
 
-        double y = 0.5 * gamepad1.left_stick_x;
-        double x = 0.5 * -gamepad1.left_stick_y;
-        double rx = 0.7 * gamepad1.right_stick_x;
+        double y = 0.75 * gamepad1.left_stick_x;
+        double x = 0.75 * -gamepad1.left_stick_y;
+        double rx = 0.45 * gamepad1.right_stick_x;
 
         double denominator = Math.max(Math.abs(y) + Math.abs(x) + Math.abs(rx), 1);
 
