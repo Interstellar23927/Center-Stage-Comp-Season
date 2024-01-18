@@ -19,6 +19,7 @@ public class TeleOpFirstComp extends LinearOpMode {
 
         MecanumDrive drive = new MecanumDrive(robot, timer);
         Collector collector = new Collector(robot);
+        Slides slides = new Slides(robot);
 
         waitForStart();
 
@@ -27,6 +28,11 @@ public class TeleOpFirstComp extends LinearOpMode {
         while(opModeIsActive()) {
             drive.Update(gamepad1, gamepad2);
             collector.Update(gamepad1, gamepad2);
+            collector.loop(gamepad1, gamepad2);
+            slides.Update(gamepad1, gamepad2);
+            telemetry.addData("Left Flipper", robot.leftFlipper.getPower()); //power
+            telemetry.addData("Right Flipper", robot.rightFlipper.getPower()); //power
+            telemetry.update();
         }
     }
 
