@@ -15,7 +15,7 @@ import com.qualcomm.robotcore.hardware.HardwareMap;
  * This hardware class assumes the following device names have been configured on the robot:
  * Note:  All names are lower case and some have single spaces between words.
  *
- * Motor channel:  Left  drive motor:        "left_drive"
+ * Motor channel:  Left drive motor:         "left_drive"
  * Motor channel:  Right drive motor:        "right_drive"
  * Motor channel:  Manipulator drive motor:  "left_arm"
  * Servo channel:  Servo to open left claw:  "left_hand"
@@ -29,18 +29,23 @@ public class HardwareRobot {
     public DcMotor frontLeft;
     public DcMotor backRight;
     public DcMotor backLeft;
-    public DcMotor rightArm;
+
     public DcMotor leftArm;
+    public DcMotor rightArm;
+
     public DcMotor leftHook;
     public DcMotor rightHook;
-    public Servo rightClamp;
+
     public Servo leftClamp;
-    //public Servo roboLauncher;
+    public Servo rightClamp;
+    public Servo launcher;
+
     //public CRServo openGate;
     //public CRServo rightDep;
     //public CRServo leftDep;
-    public CRServo rightFlipper;
+
     public CRServo leftFlipper;
+    public CRServo rightFlipper;
 
     HardwareMap hwMap;
 
@@ -83,7 +88,7 @@ public class HardwareRobot {
         rightFlipper = hwMap.get(CRServo.class, "rightFlipper");
         leftFlipper = hwMap.get(CRServo.class, "leftFlipper");
 
-        //roboLauncher = hwMap.get(Servo.class, "roboLauncher");
+        launcher = hwMap.get(Servo.class, "roboLauncher");
 
 
     }
