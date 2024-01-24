@@ -12,12 +12,12 @@ public class Collector {
 
     public void loop(Gamepad gamepad1, Gamepad gamepad2) {
 
-        while (gamepad2.x) {
+        while (gamepad2.dpad_up) {
             robot.leftFlipper.setPower(-0.1);
             robot.rightFlipper.setPower(0.1); //7,9,1
         }
 
-        while (gamepad2.y) {
+        while (gamepad2.dpad_down) {
             robot.leftFlipper.setPower(0.3);
             robot.rightFlipper.setPower(-0.3); //8,4,0
         }
