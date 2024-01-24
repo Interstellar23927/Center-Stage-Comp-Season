@@ -29,10 +29,16 @@ public class HardwareRobot {
     public DcMotor frontLeft;
     public DcMotor backRight;
     public DcMotor backLeft;
-    public DcMotor slideRight;
-    public DcMotor slideLeft;
+    public DcMotor rightArm;
+    public DcMotor leftArm;
+    public DcMotor leftHook;
+    public DcMotor rightHook;
     public Servo rightClamp;
     public Servo leftClamp;
+    //public Servo roboLauncher;
+    //public CRServo openGate;
+    //public CRServo rightDep;
+    //public CRServo leftDep;
     public CRServo rightFlipper;
     public CRServo leftFlipper;
 
@@ -55,9 +61,10 @@ public class HardwareRobot {
         frontLeft = hwMap.get(DcMotor.class, "frontLeft");
         backRight = hwMap.get(DcMotor.class, "backRight");
         backLeft = hwMap.get(DcMotor.class, "backLeft");
-        slideRight = hwMap.get(DcMotor.class, "slideRight");
-        slideLeft = hwMap.get(DcMotor.class, "slideLeft");
 
+        rightArm = hwMap.get(DcMotor.class, "rightArm");
+        leftArm = hwMap.get(DcMotor.class, "leftArm");
+//suspension
         // Slide motors
 
         // Motor Instant Brake for TeleOp
@@ -65,13 +72,19 @@ public class HardwareRobot {
         frontLeft.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         backRight.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         backLeft.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-        slideRight.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-        slideLeft.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
 
+        rightArm.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        leftArm.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+//suspension
         // Define and Initialize Servos
         rightClamp = hwMap.get(Servo.class, "rightClamp");
         leftClamp = hwMap.get(Servo.class, "leftClamp");
+
         rightFlipper = hwMap.get(CRServo.class, "rightFlipper");
         leftFlipper = hwMap.get(CRServo.class, "leftFlipper");
+
+        //roboLauncher = hwMap.get(Servo.class, "roboLauncher");
+
+
     }
 }
