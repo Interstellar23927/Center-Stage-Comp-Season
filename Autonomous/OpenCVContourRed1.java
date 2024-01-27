@@ -1,4 +1,4 @@
-package org.firstinspires.ftc.teamcode;
+package org.firstinspires.ftc.teamcode.Autonomous;
 
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
@@ -11,13 +11,20 @@ import org.openftc.easyopencv.OpenCvCameraRotation;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
+import org.firstinspires.ftc.teamcode.HardwareRobot;
+
 
 import org.firstinspires.ftc.robotcore.external.Telemetry;
 
- //Disable if not using FTC Dashboard https://github.com/PinkToTheFuture/OpenCV_FreightFrenzy_2021-2022#opencv_freightfrenzy_2021-2022
+//Disable if not using FTC Dashboard https://github.com/PinkToTheFuture/OpenCV_FreightFrenzy_2021-2022#opencv_freightfrenzy_2021-2022
 @Autonomous(name="OpenCVContourRed1", group="Tutorials")
 
-public class OpenCV_Contour_3954_Test extends LinearOpMode {
+public class OpenCVContourRed1 extends LinearOpMode {
+
+    HardwareRobot robot;
+    public OpenCVContourRed1(HardwareRobot r) {
+        robot = r;
+    }
     private OpenCvCamera webcam;
 
     private static final int CAMERA_WIDTH  = 640; // width  of wanted camera resolution
@@ -51,8 +58,8 @@ public class OpenCV_Contour_3954_Test extends LinearOpMode {
         int cameraMonitorViewId = hardwareMap.appContext.getResources().getIdentifier("cameraMonitorViewId", "id", hardwareMap.appContext.getPackageName());
         webcam = OpenCvCameraFactory.getInstance().createWebcam(hardwareMap.get(WebcamName.class, "Webcam 1"), cameraMonitorViewId);
         //OpenCV Pipeline
-        ContourPipeline myPipeline;
-        webcam.setPipeline(myPipeline = new ContourPipeline(borderLeftX,borderRightX,borderTopY,borderBottomY));
+        ContourPipelineRed1 myPipeline;
+        webcam.setPipeline(myPipeline = new ContourPipelineRed1(borderLeftX,borderRightX,borderTopY,borderBottomY));
         // Configuration of Pipeline
         myPipeline.configureScalarLower(scalarLowerYCrCb.val[0],scalarLowerYCrCb.val[1],scalarLowerYCrCb.val[2]);
         myPipeline.configureScalarUpper(scalarUpperYCrCb.val[0],scalarUpperYCrCb.val[1],scalarUpperYCrCb.val[2]);
@@ -74,9 +81,9 @@ public class OpenCV_Contour_3954_Test extends LinearOpMode {
             }
         });
         // Only if you are using ftcdashboard
-      //  FtcDashboard dashboard = FtcDashboard.getInstance();
-      //  telemetry = new MultipleTelemetry(telemetry, dashboard.getTelemetry());
-     //   FtcDashboard.getInstance().startCameraStream(webcam, 10);
+        //  FtcDashboard dashboard = FtcDashboard.getInstance();
+        //  telemetry = new MultipleTelemetry(telemetry, dashboard.getTelemetry());
+        //   FtcDashboard.getInstance().startCameraStream(webcam, 10);
 
         telemetry.update();
         waitForStart();
@@ -109,7 +116,7 @@ public class OpenCV_Contour_3954_Test extends LinearOpMode {
             }
         }
     }
-    public void testing(ContourPipeline myPipeline){
+    public void testing(ContourPipelineRed1 myPipeline){
         if(lowerruntime + 0.05 < getRuntime()){
             CrLowerUpdate += -gamepad1.left_stick_y;
             CbLowerUpdate += gamepad1.left_stick_x;
@@ -141,20 +148,66 @@ public class OpenCV_Contour_3954_Test extends LinearOpMode {
     }
     public void AUTONOMOUS_A(){
         telemetry.addLine("Autonomous A");
-        //go forward
+        robot.frontRight.setPower(-.4);
+        robot.frontLeft.setPower(-.4);
+        robot.backRight.setPower(-.4);
+        robot.backLeft.setPower(-.4);
+
+        sleep(600);
+
+        robot.frontRight.setPower(0);
+        robot.frontLeft.setPower(0);
+        robot.backRight.setPower(0);
+        robot.backLeft.setPower(0);
+
         //deposit
+        robot.leftClamp.setPosition(0.1);
     }
     public void AUTONOMOUS_B(){
         telemetry.addLine("Autonomous B");
-        //go forward certain distance
-        //turn right
-        //Deposit
+        robot.frontRight.setPower(-.4);
+        robot.frontLeft.setPower(-.4);
+        robot.backRight.setPower(-.4);
+        robot.backLeft.setPower(-.4);
+
+        sleep(600);
+
+        robot.frontRight.setPower(0);
+        robot.frontLeft.setPower(0);
+        robot.backRight.setPower(0);
+        robot.backLeft.setPower(0);
+
+        robot.frontRight.setPower(.5);
+        robot.frontLeft.setPower(-.5);
+        robot.backRight.setPower(.5);
+        robot.backLeft.setPower(-.5);
+
+        sleep(600);
+
+        robot.leftClamp.setPosition(0.1);
 
     }
     public void AUTONOMOUS_C(){
         telemetry.addLine("Autonomous C");
-        //go forward certain distance
-        //turn left
-        //Deposit
+        robot.frontRight.setPower(-.4);
+        robot.frontLeft.setPower(-.4);
+        robot.backRight.setPower(-.4);
+        robot.backLeft.setPower(-.4);
+
+        sleep(600);
+
+        robot.frontRight.setPower(0);
+        robot.frontLeft.setPower(0);
+        robot.backRight.setPower(0);
+        robot.backLeft.setPower(0);
+
+        robot.frontRight.setPower(-.5);
+        robot.frontLeft.setPower(.5);
+        robot.backRight.setPower(-.5);
+        robot.backLeft.setPower(.5);
+
+        sleep(600);
+
+        robot.leftClamp.setPosition(0.1);
     }
 }
