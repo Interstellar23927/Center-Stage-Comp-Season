@@ -1,5 +1,4 @@
-
-package org.firstinspires.ftc.teamcode;
+package org.firstinspires.ftc.teamcode.Autonomous;
 
 import org.opencv.core.Core;
 import org.opencv.core.Mat;
@@ -20,7 +19,7 @@ import java.util.List;
 public class ContourPipelineRed1 extends OpenCvPipeline {
     Scalar HOT_PINK = new Scalar(136, 8, 8);
 
-    // Pink, the default color                         Y      Cr     Cb    (Do not change Y)
+    // BloodRed, the default color                         Y      Cr     Cb    (Do not change Y)
     public static Scalar scalarLowerYCrCb = new Scalar(0.0, 133.0, 77.0);
     public static Scalar scalarUpperYCrCb = new Scalar(255.0, 173.0, 127.0);
 
@@ -60,7 +59,7 @@ public class ContourPipelineRed1 extends OpenCvPipeline {
 
     private final Object sync = new Object();
 
-    public ContourPipeline(double borderLeftX, double borderRightX, double borderTopY, double borderBottomY) {
+    public ContourPipelineRed1(double borderLeftX, double borderRightX, double borderTopY, double borderBottomY) {
         this.borderLeftX = borderLeftX;
         this.borderRightX = borderRightX;
         this.borderTopY = borderTopY;
@@ -221,3 +220,4 @@ public class ContourPipelineRed1 extends OpenCvPipeline {
         }
     }
 }
+
